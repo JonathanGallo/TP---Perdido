@@ -19,7 +19,7 @@ export class Retry extends Phaser.Scene {
       .image(
         this.cameras.main.centerX,
         this.cameras.main.centerY,
-        "mainmenu_bg"
+        "derrota"
       )
       .setScale(1.1);
     // Vaca triste

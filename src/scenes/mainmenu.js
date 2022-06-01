@@ -11,9 +11,22 @@ export class MainMenu extends Phaser.Scene {
         // Fondo del menú principal
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'mainmenu_bg').setScale();
         // Boton para comenzar a jugar
-        const boton = new Button(this.cameras.main.centerX, this.cameras.main.centerY + this.cameras.main.centerY/3, 'Play', this, () => {
-            // Instrucción para pasar a la escena Play
-            this.scene.start("Play");
-        });
+        var Inicar = this.add.image(410, 340, 'INICIAR').setScale(0.8)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(410, 340, 'INICIAR2').setScale(0.8))
+      .on('pointerout', () => this.add.image(410, 340, 'INICIAR').setScale(0.8))
+      .on('pointerdown', () => this.INICIAR())
+
+        // Boton para controles
+        
+        // Boton para comenzar a jugar
+        
+
+
     }
+
+    INICIAR(){
+        this.scene.start('Play');
+    }
+    
 }
