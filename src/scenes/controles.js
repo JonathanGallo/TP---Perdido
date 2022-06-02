@@ -9,8 +9,8 @@ export class controles extends Phaser.Scene {
 
     create() {
         // Fondo del menú principal
-        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'controles').setScale();
-        // Boton para comenzar a jugar
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'controlesim').setScale();
+        // Boton para ir al menu
         
         
     }

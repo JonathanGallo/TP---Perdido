@@ -11,15 +11,25 @@ export class MainMenu extends Phaser.Scene {
         // Fondo del menú principal
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'mainmenu_bg').setScale();
         // Boton para comenzar a jugar
-        var Inicar = this.add.image(410, 340, 'INICIAR').setScale(0.8)
+        var Inicar = this.add.image(350, 360, 'INICIAR').setScale(0.9)
       .setInteractive()
-      .on('pointerover', () => this.add.image(410, 340, 'INICIAR2').setScale(0.8))
-      .on('pointerout', () => this.add.image(410, 340, 'INICIAR').setScale(0.8))
+      .on('pointerover', () => this.add.image(350, 360, 'INICIAR2').setScale(0.9))
+      .on('pointerout', () => this.add.image(350, 360, 'INICIAR').setScale(0.9))
       .on('pointerdown', () => this.INICIAR())
 
         // Boton para controles
+        var Contr = this.add.image(350, 410, 'controles').setScale(0.9)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(350, 410, 'controles2').setScale(0.9))
+      .on('pointerout', () => this.add.image(350, 410, 'controles').setScale(0.9))
+      .on('pointerdown', () => this.controles())
         
-        // Boton para comenzar a jugar
+        // Boton para creditos
+        var Credt = this.add.image(350, 460, 'creditos').setScale(0.9)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(350, 460, 'creditos2').setScale(0.9))
+      .on('pointerout', () => this.add.image(350, 460, 'creditos').setScale(0.9))
+      .on('pointerdown', () => this.creditos())
         
 
 
@@ -27,6 +37,14 @@ export class MainMenu extends Phaser.Scene {
 
     INICIAR(){
         this.scene.start('Play');
+    }
+
+    controles(){
+        this.scene.start('controles');
+    }
+
+    creditos(){
+        this.scene.start('creditos');
     }
     
 }
