@@ -8,7 +8,7 @@ export class Preloads extends Phaser.Scene {
 
   preload() {
     this.load.image("menuinicio", "public/assts/images/inicio.png");
-    this.load.image("creditos", "public/assets/images/Creditos.png");
+    this.load.image("creditosim", "public/assets/images/creditosim.png");
     this.load.image("controlesim", "public/assets/images/controlesim.png");
     this.load.image('INICIAR', 'public/assets/images/INICIAR.png');
     this.load.image('INICIAR2', 'public/assets/images/INICIAR_2.png');
@@ -16,6 +16,12 @@ export class Preloads extends Phaser.Scene {
     this.load.image('controles2', 'public/assets/images/controles_2.png');
     this.load.image('creditos', 'public/assets/images/creditos.png');
     this.load.image('creditos2', 'public/assets/images/creditos_2.png');
+    this.load.image('botonreset', 'public/assets/images/botonreset.png');
+    this.load.image('botonreset2', 'public/assets/images/botonreset_2.png');
+    this.load.image('botonvolver', 'public/assets/images/botonvolver.png');
+    this.load.image('botonvolver2', 'public/assets/images/botonvolver_2.png');
+    this.load.image('botonmapa', 'public/assets/images/botonmapa.png');
+    this.load.image('botonmapa2', 'public/assets/images/botonmapa_2.png');
     this.load.image("mapa", "public/assets/images/Mapa_de_niveles.png");
     this.load.image("derrota", "public/assets/images/derrota.png")
     this.load.image("phaser_logo", "public/assets/images/phaser_logo.png");

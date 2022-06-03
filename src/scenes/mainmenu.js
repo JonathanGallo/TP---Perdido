@@ -1,4 +1,3 @@
-import Button from "../js/button.js";
 
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class MainMenu extends Phaser.Scene {
@@ -36,7 +35,7 @@ export class MainMenu extends Phaser.Scene {
     }
 
     INICIAR(){
-        this.scene.start('Play');
+        this.scene.start('mapa');
     }
 
     controles(){
@@ -46,5 +45,4 @@ export class MainMenu extends Phaser.Scene {
     creditos(){
         this.scene.start('creditos');
     }
-    
 }

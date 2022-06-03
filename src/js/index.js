@@ -1,8 +1,11 @@
 import { Preloads } from "../scenes/preloads.js";
 import { MainMenu } from "../scenes/mainmenu.js";
 import { controles } from "../scenes/controles.js";
+import { creditos } from "../scenes/creditos.js";
 import { Play } from "../scenes/play.js";
 import { Retry } from "../scenes/retry.js";
+import { mapa } from "../scenes/mapa.js";
+
 
 
 
@@ -29,7 +32,7 @@ var config = {
       debug: false,
     },
   },
-  scene: [Preloads, MainMenu, controles, Play, Retry], // Listado de todas las escenas del juego, en orden
+  scene: [Preloads, MainMenu, controles, creditos, mapa, Play, Retry], // Listado de todas las escenas del juego, en orden
   // La primera escena es con la cual empieza el juego
 };
 
