@@ -1,5 +1,3 @@
-import Button from "../js/button.js";
-
 var score;
 
 // Clase Retry, donde se crean los botones, el logo y el fondo del menú derrota
@@ -32,15 +30,26 @@ export class Retry extends Phaser.Scene {
       .setOrigin(0.5);
 
     // Boton para volver a jugar
-    const boton = new Button(
-      this.cameras.main.centerX,
-      this.cameras.main.centerY + this.cameras.main.centerY / 3,
-      "Retry",
-      this,
-      () => {
-        // Instrucción para pasar a la escena Play
-        this.scene.start("Play");
-      }
-    );
+    var botonre = this.add.image(500, 560, 'botonreset').setScale(0.5)
+    .setInteractive()
+    .on('pointerover', () => this.add.image(500, 560, 'botonreset2').setScale(0.5))
+    .on('pointerout', () => this.add.image(500, 560, 'botonreset').setScale(0.5))
+    .on('pointerdown', () => this.botonreset())
+    // Boton para volver al mapa
+    var botonmapa = this.add.image(630, 560, 'botonmapa').setScale(0.5)
+    .setInteractive()
+    .on('pointerover', () => this.add.image(630, 560, 'botonmapa2').setScale(0.5))
+    .on('pointerout', () => this.add.image(630, 560, 'botonmapa').setScale(0.5))
+    .on('pointerdown', () => this.botonmapa())
+
   }
+
+  botonreset(){
+    this.scene.start('Play');
+  }
+
+  botonmapa(){
+    this.scene.start('mapa');
+  }
+  
 }

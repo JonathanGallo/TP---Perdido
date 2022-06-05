@@ -14,11 +14,11 @@ export class controles extends Phaser.Scene {
       .setInteractive()
       .on('pointerover', () => this.add.image(70, 70, 'botonvolver2').setScale(0.5))
       .on('pointerout', () => this.add.image(70, 70, 'botonvolver').setScale(0.5))
-      .on('pointerdown', () => this.botonreset())
+      .on('pointerdown', () => this.botonvolver())
         
     }
 
-    botonreset(){
+    botonvolver(){
         this.scene.start('MainMenu');
     }
 }
