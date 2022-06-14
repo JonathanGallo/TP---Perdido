@@ -18,6 +18,7 @@ export class Play extends Phaser.Scene {
     this.load.tilemapTiledJSON("map", "public/assets/tilemaps/map.json");
     this.load.image("tilesBelow", "public/assets/images/sky_atlas.png");
     this.load.image("tilesPlatform", "public/assets/images/platform_atlas.png");
+    
   }
 
   create() {
