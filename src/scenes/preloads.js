@@ -28,6 +28,7 @@ export class Preloads extends Phaser.Scene {
     this.load.image('boton_mapa2', 'public/assets/images/boton_mapa2.png');
     this.load.image("mapa", "public/assets/images/Mapa_de_niveles.png");
     this.load.image("derrota", "public/assets/images/derrota.png")
+    this.load.image("victoriaim", "public/assets/images/Victoria.png")
     this.load.image("phaser_logo", "public/assets/images/phaser_logo.png");
     this.load.image("mainmenu_bg", "public/assets/images/inicio.png");
     this.load.image("sky", "public/assets/images/sky.png");

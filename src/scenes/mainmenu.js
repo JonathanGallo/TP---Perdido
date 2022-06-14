@@ -35,7 +35,7 @@ export class MainMenu extends Phaser.Scene {
     }
 
     INICIAR(){
-        this.scene.start('mapa');
+        this.scene.start('victoria');
     }
 
     controles(){
