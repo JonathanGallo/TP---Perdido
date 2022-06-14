@@ -13,7 +13,7 @@ export class victoria extends Phaser.Scene {
 
     create() {
        // Fondo del menú derrota
-       this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"victoriaim").setScale(1.1);
+       this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"victoriaim").setScale(1);
       // Texto que muestra el puntaje maximo alcanzado
        this.add.text(this.cameras.main.centerX,this.cameras.main.centerY,`Puntaje alcanzado: ${score}`).setOrigin(0.5);
        // Boton para volver a jugar
