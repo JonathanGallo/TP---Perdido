@@ -21,10 +21,21 @@ export class Play1 extends Phaser.Scene {
     
     }
 
-  create() {
-    const map = this.make.tilemap({ key: "map1" });
+    create() {
+      const map = this.make.tilemap({ key: "map1" });
+
+    // Parameters are the name you gave the tileset in Tiled 
+    // and then the key of the tileset image in
+    // Phaser's cache (i.e. the name you used in preload)
+
+    const tilesetBelow = map.addTilesetImage("tubos", "tubos1");
     const tilesetPlatform = map.addTilesetImage("tubos", "tubos1");
+
+    // Parameters: layer name (or index) from Tiled, tileset, x, y
+    //const belowLayer = map.createLayer("fondo", tilesetBelow, 0, 0);
     const worldLayer = map.createLayer("solidos", tilesetPlatform, 0, 0);
+    const objectsLayer = map.getObjectLayer("objetos");
+
     worldLayer.setCollisionByProperty({ solidos: true });    
 
 
