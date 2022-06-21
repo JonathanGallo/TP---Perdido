@@ -17,26 +17,19 @@ export class Play1 extends Phaser.Scene {
     preload() {
        this.load.tilemapTiledJSON("map1", "public/assets/tilemaps/mapanivel1.json");
        this.load.image("tubos1", "public/assets/tilemaps/tubos.png");
+       this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
     
     }
 
-    create() {
-      const map = this.make.tilemap({ key: "map1" });
-      var tubos = map.addTilesetImage("tubos", "tubos1");
-      var solidos = map1.createDynamicLayer("Solidos", tubos, 0, 0);
-
-    
-
-    // Parameters: layer name (or index) from Tiled, tileset, x, y
-    const belowLayer = map.createLayer("Fondo", tilesetBelow, 0, 0);
-    const worldLayer = map.createLayer("Plataformas", tilesetPlatform, 0, 0);
-    const objectsLayer = map.getObjectLayer("Objetos");
-
-    worldLayer.setCollisionByProperty({ collides: true });
+  create() {
+    const map = this.make.tilemap({ key: "map1" });
+    const tilesetPlatform = map.addTilesetImage("tubos", "tubos1");
+    const worldLayer = map.createLayer("solidos", tilesetPlatform, 0, 0);
+    worldLayer.setCollisionByProperty({ solidos: true });    
 
 
     // Find in the Object Layer, the name "dude" and get position
-    const spawnPoint = map.findObject("Objetos", (obj) => obj.name === "dude");
+    const spawnPoint = map.findObject("objetos", (obj) => obj.name === "dude");
     // The player and its settings
     player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "dude");
 
