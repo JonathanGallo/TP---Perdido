@@ -31,7 +31,7 @@ export class victoria extends Phaser.Scene {
     }
 
     botonreset(){
-      this.scene.start('Play');
+      this.scene.start('Play1');
     }
 
     botonmapa(){

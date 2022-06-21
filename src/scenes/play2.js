@@ -66,18 +66,18 @@ export class Play2 extends Phaser.Scene {
         // find object layer
         // if type is "stars", add to stars group
         objectsLayer.objects.forEach((objData) => {
-        //console.log(objData.name, objData.type, objData.x, objData.y);
+            //console.log(objData.name, objData.type, objData.x, objData.y);
 
-        const { x = 0, y = 0, name, type } = objData;
-        switch (type) {
-            case "stars": {
-            // add star to scene
-            // console.log("estrella agregada: ", x, y);
-            var star = stars.create(x, y, "star");
-            star.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-            break;
+            const { x = 0, y = 0, name, type } = objData;
+            switch (type) {
+                case "stars": {
+                    // add star to scene
+                    // console.log("estrella agregada: ", x, y);
+                    var star = stars.create(x, y, "star");
+                    star.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+                    break;
+                }
             }
-        }
         });
 
         // Create empty group of bombs
@@ -102,6 +102,27 @@ export class Play2 extends Phaser.Scene {
 
         gameOver = false;
         score = 0;
+
+        // Boton para volver a jugar
+      var botonre = this.add.image(100, 60, 'botonreset').setScale(0.5)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(100, 60, 'botonreset2').setScale(0.5))
+      .on('pointerout', () => this.add.image(100, 60, 'botonreset').setScale(0.5))
+      .on('pointerdown', () => this.botonreset())
+      // Boton para volver al mapa
+      var botonmapa = this.add.image(220, 60, 'botonmapa').setScale(0.5)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(220, 60, 'botonmapa2').setScale(0.5))
+      .on('pointerout', () => this.add.image(220, 60, 'botonmapa').setScale(0.5))
+      .on('pointerdown', () => this.botonmapa())
+    }
+
+    botonreset(){
+        this.scene.start('Play2');
+    }
+
+    botonmapa(){
+        this.scene.start('mapa');
     }
 
     update() {

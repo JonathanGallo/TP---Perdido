@@ -22,7 +22,9 @@ export class Play1 extends Phaser.Scene {
     }
 
     create() {
-        const map = this.make.tilemap({ key: "map1" });
+
+      this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"fondo").setScale(1);
+      const map = this.make.tilemap({ key: "map1" });
 
       // Parameters are the name you gave the tileset in Tiled 
       // and then the key of the tileset image in
@@ -101,6 +103,29 @@ export class Play1 extends Phaser.Scene {
 
       gameOver = false;
       score = 0;
+
+      // Boton para volver a jugar
+      var botonre = this.add.image(100, 60, 'botonreset').setScale(0.5)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(100, 60, 'botonreset2').setScale(0.5))
+      .on('pointerout', () => this.add.image(100, 60, 'botonreset').setScale(0.5))
+      .on('pointerdown', () => this.botonreset())
+      // Boton para volver al mapa
+      var botonmapa = this.add.image(220, 60, 'botonmapa').setScale(0.5)
+      .setInteractive()
+      .on('pointerover', () => this.add.image(220, 60, 'botonmapa2').setScale(0.5))
+      .on('pointerout', () => this.add.image(220, 60, 'botonmapa').setScale(0.5))
+      .on('pointerdown', () => this.botonmapa())
+
+    }
+    
+
+    botonreset(){
+      this.scene.start('Play1');
+    }
+
+    botonmapa(){
+      this.scene.start('mapa');
     }
 
     update() {
