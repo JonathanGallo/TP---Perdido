@@ -3,6 +3,7 @@ import { MainMenu } from "../scenes/mainmenu.js";
 import { controles } from "../scenes/controles.js";
 import { creditos } from "../scenes/creditos.js";
 import { Play } from "../scenes/play.js";
+import { Play1 } from "../scenes/play1.js";
 import { Retry } from "../scenes/retry.js";
 import { victoria } from "../scenes/victoria.js";
 import { mapa } from "../scenes/mapa.js";
@@ -33,7 +34,7 @@ var config = {
       debug: false,
     },
   },
-  scene: [Preloads, MainMenu, controles, creditos, mapa, Play, Retry, victoria], // Listado de todas las escenas del juego, en orden
+  scene: [Preloads, MainMenu, controles, creditos, mapa, Play, Play1, Retry, victoria], // Listado de todas las escenas del juego, en orden
   // La primera escena es con la cual empieza el juego
 };
 
