@@ -35,10 +35,10 @@ export class mapa extends Phaser.Scene {
     }
 
     botonmapa1(){
-        this.scene.start('Play');
+        this.scene.start('Play1');
     }
 
     botonmapa2(){
-        this.scene.start('Play1');
+        this.scene.start('Play2');
     }
 }
