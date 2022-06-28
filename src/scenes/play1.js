@@ -18,6 +18,7 @@ export class Play1 extends Phaser.Scene {
        this.load.tilemapTiledJSON("map1", "public/assets/tilemaps/mapanivel1.json");
        this.load.image("tubos1", "public/assets/tilemaps/tubos.png");
        this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
+       //this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
     
     }
 
@@ -30,8 +31,11 @@ export class Play1 extends Phaser.Scene {
       // and then the key of the tileset image in
       // Phaser's cache (i.e. the name you used in preload)
 
-      const tilesetBelow = map.addTilesetImage("tubos", "tubos1");
+      
+
+      const tilesetBelow = map.addTilesetImage("fondo_nivel1", "fondo");
       const tilesetPlatform = map.addTilesetImage("tubos", "tubos1");
+      
 
       // Parameters: layer name (or index) from Tiled, tileset, x, y
       const belowLayer = map.createLayer("fondo", tilesetBelow, 0, 0);
