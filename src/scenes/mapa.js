@@ -1,3 +1,5 @@
+var musicamapa
+
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class mapa extends Phaser.Scene {
     constructor() {
@@ -27,18 +29,27 @@ export class mapa extends Phaser.Scene {
       .on('pointerover', () => this.add.image(650, 360, 'boton_mapa2_2').setScale(3.5))
       .on('pointerout', () => this.add.image(650, 360, 'boton_mapa2').setScale(3.5))
       .on('pointerdown', () => this.botonmapa2())
+
+      //musica
+      musicamapa = this.sound.add("musicamapa");
+      musicamapa.play({volume:1, loop:true})
         
     }
 
     botonreset(){
         this.scene.start('MainMenu');
+        musicamapa.stop();
     }
 
     botonmapa1(){
         this.scene.start('Play1');
+        this.scene.launch("HUD1");
+        musicamapa.stop();
+        
     }
 
     botonmapa2(){
         this.scene.start('Play2');
+        musicamapa.stop();
     }
 }

@@ -39,6 +39,17 @@ export class Preloads extends Phaser.Scene {
       frameWidth: 62,
       frameHeight: 52,
     });
+    this.load.audio("musicamenu", "public/assets/audio/musica_menu.mp3")
+    this.load.audio("musicanivel1", "public/assets/audio/musica_nivel1.mp3")
+    this.load.audio("musicanivel2", "public/assets/audio/musica_nivel2.mp3")
+    this.load.audio("musicavictoria", "public/assets/audio/musica_victoria.mp3")
+    this.load.audio("musicaderrota", "public/assets/audio/musica_derrota.mp3")
+    this.load.audio("musicacontroles", "public/assets/audio/musica_controles.mp3")
+    this.load.audio("musicacreditos", "public/assets/audio/musica_creditos.mp3")
+    this.load.audio("musicamapa", "public/assets/audio/musica_mapa.mp3")
+
+
+
   }
 
   create() {

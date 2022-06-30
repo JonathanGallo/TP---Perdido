@@ -6,6 +6,7 @@ var cursors;
 var score;
 var gameOver;
 var scoreText;
+var musicanivel1
 
 // Clase Play, donde se crean todos los sprites, el escenario del juego y se inicializa y actualiza toda la logica del juego.
 export class Play1 extends Phaser.Scene {
@@ -15,10 +16,10 @@ export class Play1 extends Phaser.Scene {
     }
 
     preload() {
-       this.load.tilemapTiledJSON("map1", "public/assets/tilemaps/mapanivel1.json");
-       this.load.image("tubos1", "public/assets/tilemaps/tubos.png");
-       this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
-       //this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
+      this.load.tilemapTiledJSON("map1", "public/assets/tilemaps/mapanivel1.json");
+      this.load.image("tubos1", "public/assets/tilemaps/tubos.png");
+      this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
+      
     
     }
 
@@ -108,29 +109,14 @@ export class Play1 extends Phaser.Scene {
       gameOver = false;
       score = 0;
 
-      // Boton para volver a jugar
-      var botonre = this.add.image(100, 60, 'botonreset').setScale(0.5)
-      .setInteractive()
-      .on('pointerover', () => this.add.image(100, 60, 'botonreset2').setScale(0.5))
-      .on('pointerout', () => this.add.image(100, 60, 'botonreset').setScale(0.5))
-      .on('pointerdown', () => this.botonreset())
-      // Boton para volver al mapa
-      var botonmapa = this.add.image(220, 60, 'botonmapa').setScale(0.5)
-      .setInteractive()
-      .on('pointerover', () => this.add.image(220, 60, 'botonmapa2').setScale(0.5))
-      .on('pointerout', () => this.add.image(220, 60, 'botonmapa').setScale(0.5))
-      .on('pointerdown', () => this.botonmapa())
+
+      //musica
+      
+      musicanivel1 = this.sound.add("musicanivel1");
+      musicanivel1.play({volume:0.1, loop:true})
 
     }
     
-
-    botonreset(){
-      this.scene.start('Play1');
-    }
-
-    botonmapa(){
-      this.scene.start('mapa');
-    }
 
     update() {
       if (gameOver) {

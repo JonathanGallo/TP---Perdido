@@ -1,5 +1,5 @@
 var score;
-
+var musicaderrota
 // Clase Retry, donde se crean los botones, el logo y el fondo del menú derrota
 export class Retry extends Phaser.Scene {
   constructor() {
@@ -42,14 +42,20 @@ export class Retry extends Phaser.Scene {
     .on('pointerout', () => this.add.image(630, 560, 'botonmapa').setScale(0.5))
     .on('pointerdown', () => this.botonmapa())
 
+    //musica
+    musicaderrota = this.sound.add("musicaderrota");
+    musicaderrota.play({volume:0.1, loop:true})
+
   }
 
   botonreset(){
-    this.scene.start('Play');
+    this.scene.start('Play1');
+    musicaderrota.stop();
   }
 
   botonmapa(){
     this.scene.start('mapa');
+    musicaderrota.stop();
   }
   
 }

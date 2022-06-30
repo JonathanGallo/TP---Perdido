@@ -6,6 +6,7 @@ var cursors;
 var score;
 var gameOver;
 var scoreText;
+var musicanivel2;
 
 // Clase Play, donde se crean todos los sprites, el escenario del juego y se inicializa y actualiza toda la logica del juego.
 export class Play2 extends Phaser.Scene {
@@ -116,14 +117,21 @@ export class Play2 extends Phaser.Scene {
       .on('pointerover', () => this.add.image(220, 60, 'botonmapa2').setScale(0.5))
       .on('pointerout', () => this.add.image(220, 60, 'botonmapa').setScale(0.5))
       .on('pointerdown', () => this.botonmapa())
+
+      //musica
+      
+      musicanivel2 = this.sound.add("musicanivel2");
+      musicanivel2.play({volume:0.1, loop:true})
     }
 
     botonreset(){
         this.scene.start('Play2');
+        musicanivel2.stop();
     }
 
     botonmapa(){
         this.scene.start('mapa');
+        musicanivel2.stop();
     }
 
     update() {

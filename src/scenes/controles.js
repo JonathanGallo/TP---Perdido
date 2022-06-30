@@ -1,3 +1,4 @@
+var musicacontroles
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class controles extends Phaser.Scene {
     constructor() {
@@ -15,10 +16,15 @@ export class controles extends Phaser.Scene {
       .on('pointerover', () => this.add.image(70, 70, 'botonvolver2').setScale(0.5))
       .on('pointerout', () => this.add.image(70, 70, 'botonvolver').setScale(0.5))
       .on('pointerdown', () => this.botonvolver())
+
+      //musica
+      musicacontroles = this.sound.add("musicacontroles");
+      musicacontroles.play({volume:1, loop:true})
         
     }
 
     botonvolver(){
         this.scene.start('MainMenu');
+        musicacontroles.stop();
     }
 }

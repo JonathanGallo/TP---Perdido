@@ -1,4 +1,6 @@
 
+var musicamenu;
+
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class MainMenu extends Phaser.Scene {
     constructor() {
@@ -29,20 +31,26 @@ export class MainMenu extends Phaser.Scene {
       .on('pointerover', () => this.add.image(350, 460, 'creditos2').setScale(0.9))
       .on('pointerout', () => this.add.image(350, 460, 'creditos').setScale(0.9))
       .on('pointerdown', () => this.creditos())
-        
 
+      //musica
+      musicamenu = this.sound.add("musicamenu");
+      musicamenu.play({volume:1, loop:true})
 
     }
 
     INICIAR(){
         this.scene.start('mapa');
+        musicamenu.stop();
     }
 
     controles(){
         this.scene.start('controles');
+        musicamenu.stop();
+      
     }
 
     creditos(){
         this.scene.start('creditos');
+        musicamenu.stop();
     }
 }
