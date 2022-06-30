@@ -5,7 +5,7 @@ import { creditos } from "../scenes/creditos.js";
 import { Play } from "../scenes/play.js";
 import { Play1 } from "../scenes/play1.js";
 import { Play2 } from "../scenes/play2.js";
-import { Retry } from "../scenes/retry.js";
+import { Retry } from "../scenes/Retry.js";
 import { victoria } from "../scenes/victoria.js";
 import { mapa } from "../scenes/mapa.js";
 
