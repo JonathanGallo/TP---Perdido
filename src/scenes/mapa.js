@@ -43,7 +43,6 @@ export class mapa extends Phaser.Scene {
 
     botonmapa1(){
         this.scene.start('Play1');
-        this.scene.launch("HUD1");
         musicamapa.stop();
         
     }

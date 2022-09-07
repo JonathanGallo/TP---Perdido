@@ -16,12 +16,7 @@ export class HUD1 extends Phaser.Scene {
       
     }
 
-    botonreset(){
-        this.scene.launch('Play1');
-        this.scene.launch("HUD1");
-        musicanivel1.stop();
-        
-    }
+    
   
     
 }

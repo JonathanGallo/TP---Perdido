@@ -34,12 +34,12 @@ export class MainMenu extends Phaser.Scene {
 
       //musica
       musicamenu = this.sound.add("musicamenu");
-      musicamenu.play({volume:1, loop:true})
+      musicamenu.play({volume:0.1, loop:true})
 
     }
 
     INICIAR(){
-        this.scene.start('mapa');
+        this.scene.start('Play1');
         musicamenu.stop();
     }
 

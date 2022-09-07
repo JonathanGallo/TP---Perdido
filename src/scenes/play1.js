@@ -5,8 +5,12 @@ var bombs;
 var cursors;
 var score;
 var gameOver;
+var victoria;
 var scoreText;
-var musicanivel1
+var musicanivel1;
+var initialTime;
+var timeText;
+var timedEvent;
 
 // Clase Play, donde se crean todos los sprites, el escenario del juego y se inicializa y actualiza toda la logica del juego.
 export class Play1 extends Phaser.Scene {
@@ -17,31 +21,27 @@ export class Play1 extends Phaser.Scene {
 
     preload() {
       this.load.tilemapTiledJSON("map1", "public/assets/tilemaps/mapanivel1.json");
-      this.load.image("tubos1", "public/assets/tilemaps/tubos.png");
+      this.load.image("tubos", "public/assets/tilemaps/tubos.png");
       this.load.image("fondo", "public/assets/images/fondo_nivel1.png");
-      
+      this.load.image("bandera", "public/assets/images/bandera.png"); 
     
     }
 
     create() {
-
-      this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"fondo").setScale(1);
       const map = this.make.tilemap({ key: "map1" });
 
       // Parameters are the name you gave the tileset in Tiled 
       // and then the key of the tileset image in
       // Phaser's cache (i.e. the name you used in preload)
-
       
-
       const tilesetBelow = map.addTilesetImage("fondo_nivel1", "fondo");
-      const tilesetPlatform = map.addTilesetImage("tubos", "tubos1");
+      const tilesetPlatform = map.addTilesetImage("tubos", "tubos");
       
 
       // Parameters: layer name (or index) from Tiled, tileset, x, y
       const belowLayer = map.createLayer("fondo", tilesetBelow, 0, 0);
       const worldLayer = map.createLayer("solidos", tilesetPlatform, 0, 0);
-      const objectsLayer = map.getObjectLayer("objetos");
+      //const objectsLayer = map.getObjectLayer("objetos");
 
       worldLayer.setCollisionByProperty({ solidos: true });   
       
@@ -56,7 +56,7 @@ export class Play1 extends Phaser.Scene {
       this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
       this.cameras.main.startFollow(player);
 
-      //  Player physics properties. Give the little guy a slight bounce.
+      //Player physics properties. Give the little guy a slight bounce.
       //player.setBounce(0.2);
       //player.setCollideWorldBounds(true);
 
@@ -71,7 +71,7 @@ export class Play1 extends Phaser.Scene {
 
       // find object layer
       // if type is "stars", add to stars group
-      objectsLayer.objects.forEach((objData) => {
+      /* objectsLayer.objects.forEach((objData) => {
         //console.log(objData.name, objData.type, objData.x, objData.y);
 
         const { x = 0, y = 0, name, type } = objData;
@@ -84,7 +84,7 @@ export class Play1 extends Phaser.Scene {
             break;
           }
         }
-      });
+      }); */
 
       // Create empty group of bombs
       bombs = this.physics.add.group();
@@ -115,31 +115,64 @@ export class Play1 extends Phaser.Scene {
       musicanivel1 = this.sound.add("musicanivel1");
       musicanivel1.play({volume:0.1, loop:true})
 
-    }
-    
+      // cronometro
+
+      initialTime = 60;
+      timeText = this.add.text(840, 50, 'Tiempo: ' + initialTime, 
+      {font: 'bold 30pt Arial', fontSize: '36px', fill: '#000000', align:'center'});
+      timeText.scrollFactorX = 0;
+      timeText.scrollFactorY = 0;
+
+      timedEvent = this.time.addEvent(
+        {delay: 1000, callback: this.onSecond, callbackScope: this, loop: true});
+
+    ////////////////////////////////////////////////////////////////////////
+    const objectsLayer = map.getObjectLayer('objetos')
+
+		objectsLayer.objects.forEach(objData => {
+			const { x = 0, y = 0, name, width = 0, height = 0 } = objData
+
+			switch (name)
+			{
+        case 'bandera':
+        {
+          const bandera = this.physics.add.sprite(x+ (width*0.5), y+(height*0.4), 'bandera')
+          this.physics.add.collider(bandera, worldLayer);
+          this.physics.add.overlap(player, bandera, this.victoria, null, this);
+          bandera.setScale(0.5);  
+          
+          break
+        }
+      }    
+		})
+
+    //////////////////////////////////////////////////////////////////////////
+
+    }    
 
     update() {
-      if (gameOver) {
-        return;
-      }
 
       if (cursors.left.isDown) {
         player.setVelocityX(-160);
-
         player.anims.play("left", true);
+
       } else if (cursors.right.isDown) {
         player.setVelocityX(160);
-
         player.anims.play("right", true);
+
       } else {
         player.setVelocityX(0);
-
         player.anims.play("turn");
       }
 
       // REPLACE player.body.touching.down
       if (cursors.up.isDown && player.body.blocked.down) {
         player.setVelocityY(-330);
+      }
+
+
+      if (initialTime <= 0){
+        this.gameOver();
       }
     }
 
@@ -166,15 +199,45 @@ export class Play1 extends Phaser.Scene {
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
       }
-    
-
       // Función timeout usada para llamar la instrucción que tiene adentro despues de X milisegundos
-      setTimeout(() => {
+      /* setTimeout(() => {
         // Instrucción que sera llamada despues del segundo
         this.scene.start(
           "Retry",
           { score: score } // se pasa el puntaje como dato a la escena RETRY
         );
-      }, 1000); // Ese número es la cantidad de milisegundos
-  }
+      }, 1000); // Ese número es la cantidad de milisegundos */
+    }
+
+    onSecond()
+    {
+    if (! gameOver)
+    {
+      //descuento de segundos
+      initialTime = initialTime -1; // One second
+      timeText.setText('Tiempo: '+ initialTime);
+      if (initialTime == 0) 
+      {
+        timedEvent.paused = true;
+        this.gameOver()
+      }
+    }
+    }
+
+    gameOver()
+    {
+      gameOver = true;
+      this.physics.pause();
+      musicanivel1.stop();
+      this.scene.start("Retry");
+    }
+
+    victoria()
+    {
+      victoria = true;
+      this.physics.pause();
+      musicanivel1.stop();
+      this.scene.start("victoria");
+
+    }
 }

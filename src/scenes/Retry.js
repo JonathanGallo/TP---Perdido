@@ -21,13 +21,13 @@ export class Retry extends Phaser.Scene {
       )
       .setScale(1.1);
     // Texto que muestra el puntaje maximo alcanzado
-    this.add
+    /*this.add
       .text(
         this.cameras.main.centerX,
         this.cameras.main.centerY,
         `Puntaje alcanzado: ${score}`
       )
-      .setOrigin(0.5);
+      .setOrigin(0.5);*/
 
     // Boton para volver a jugar
     var botonre = this.add.image(500, 560, 'botonreset').setScale(0.5)
