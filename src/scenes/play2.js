@@ -232,6 +232,7 @@ export class Play2 extends Phaser.Scene {
     {
       gameOver = true;
       this.physics.pause();
+      musicanivel2.stop();
       this.scene.start("Retry");
     }
 
@@ -239,6 +240,7 @@ export class Play2 extends Phaser.Scene {
     {
       victoria = true;
       this.physics.pause();
+      musicanivel2.stop();
       this.scene.start("victoria");
 
     }

@@ -38,13 +38,15 @@ export class victoria extends Phaser.Scene {
     }
 
     botonreset(){
-      this.scene.start('mainmenu');
+      this.physics.pause();
       musicavictoria.stop();
+      this.scene.start('Play1');
     }
 
     botonmapa(){
+      this.physics.pause();
+      musicavictoria.stop();
       this.scene.start('mapa');
-      musicavictora.stop();
     }
   
 }

@@ -44,18 +44,21 @@ export class Retry extends Phaser.Scene {
 
     //musica
     musicaderrota = this.sound.add("musicaderrota");
-    musicaderrota.play({volume:0.1, loop:true})
+    musicaderrota.play({volume:0, loop:true})
 
   }
 
-  botonreset(){
-    this.scene.start('Play1');
-    musicaderrota.stop();
-  }
+    botonreset(){
+      this.physics.pause();
+      musicaderrota.stop();
+      this.scene.start('Play1');
+      
+    }
 
-  botonmapa(){
-    this.scene.start('mapa');
-    musicaderrota.stop();
-  }
+    botonmapa(){
+      this.physics.pause();
+      musicaderrota.stop();
+      this.scene.start('mapa');
+    }
   
 }

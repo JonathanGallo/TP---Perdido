@@ -39,18 +39,18 @@ export class MainMenu extends Phaser.Scene {
     }
 
     INICIAR(){
-        this.scene.start('Play1');
-        musicamenu.stop();
+      this.scene.start('mapa');
+      musicamenu.stop();
     }
 
     controles(){
-        this.scene.start('controles');
-        musicamenu.stop();
+      this.scene.start('controles');
+      musicamenu.stop();
       
     }
 
     creditos(){
-        this.scene.start('creditos');
-        musicamenu.stop();
+      this.scene.start('creditos');
+      musicamenu.stop();
     }
 }
